@@ -1,0 +1,9 @@
+---
+- name: "Install Python3.5"
+  apt: name={{ item }} state=present
+  with_items:
+    - python3.5
+    - python3-pip
+
+- name: "Install pip packages"
+  pip: requirements={{INSTALLATION_DIR}}/{{BUILD_URL}}/dependencies/requirements.txt

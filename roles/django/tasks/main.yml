@@ -1,0 +1,8 @@
+---
+- name: "Setup remote files"
+  git: repo={{website_repo}} dest="{{INSTALLATION_DIR}}/{{BUILD_URL}}/"
+
+- name: "Create settings_local"
+  template:
+    src="templates/settings_local.template.j2"
+    dest="{{INSTALLATION_DIR}}/{{BUILD_URL}}/ACM_General/ACM_General/settings_local.py"

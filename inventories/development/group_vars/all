@@ -1,0 +1,6 @@
+BUILD_URL: dev.kevinschoonover.me
+INSTALLATION_DIR: /var/django
+db_name: django_acmgeneral
+db_user: django_acmgeneral
+db_password: djangoUserPassword
+db_host: localhost

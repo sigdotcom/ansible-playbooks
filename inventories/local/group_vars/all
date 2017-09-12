@@ -1,0 +1,8 @@
+ansible_python_interpreter: /usr/bin/python3
+website_repo: https://github.com/sigdotcom/acm.mst.edu
+BUILD_URL: dev.kevinschoonover.me
+INSTALLATION_DIR: /var/django
+db_name: django_acmgeneral
+db_user: djangouser
+db_password: djangoUserPassword
+db_host: localhost

@@ -1,0 +1,16 @@
+---
+# Deploys the entirity of the acm.mst.edu develpoment stack to a production
+# webserver
+#  
+- name: "Ping the initial servers"
+  become: yes
+  become_method: sudo
+  hosts: all
+  tasks:
+    - ping:
+  roles:
+    - django
+    - python
+    - postgres
+    - nginx
+    - uwsgi
