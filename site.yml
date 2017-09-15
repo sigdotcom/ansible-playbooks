@@ -1,16 +1,22 @@
 ---
 # Deploys the entirity of the acm.mst.edu develpoment stack to a production
 # webserver
-#  
-- name: "Ping the initial servers"
+- hosts: all
+  name: "Deploy django full stack"
   become: yes
-  become_method: sudo
-  hosts: all
-  tasks:
-    - ping:
+  pre_tasks:
+    - name: "Clone the repository"
+      git: repo={{website_repo}} dest="{{INSTALLATION_DIR}}/{{BUILD_URL}}/"
+    - name: "Change repository permissions"
+      file: 
+        dest="{{INSTALLATION_DIR}}/{{BUILD_URL}}/" 
+        recurse=yes 
+        owner=www-data
+        group=www-data
+
   roles:
-    - django
     - python
+    - django
     - postgres
     - nginx
     - uwsgi

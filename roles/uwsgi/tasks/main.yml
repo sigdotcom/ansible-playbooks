@@ -15,5 +15,6 @@
     src="/etc/uwsgi/apps-available/ACMGeneral_uwsgi.ini"
     dest="/etc/uwsgi/apps-enabled/ACMGeneral_uwsgi.ini"
     state=link
-  notify:
-    - restart uwsgi
+
+- name: "Restart UWSGI" 
+  service: name=uwsgi state=restarted

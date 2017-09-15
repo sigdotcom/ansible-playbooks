@@ -1,8 +1,36 @@
 ---
-- name: "Setup remote files"
-  git: repo={{website_repo}} dest="{{INSTALLATION_DIR}}/{{BUILD_URL}}/"
-
 - name: "Create settings_local"
   template:
     src="templates/settings_local.template.j2"
     dest="{{INSTALLATION_DIR}}/{{BUILD_URL}}/ACM_General/ACM_General/settings_local.py"
+
+- name: "Compile SASS files"
+  command: compass compile
+  args:
+      chdir: "{{INSTALLATION_DIR}}/{{BUILD_URL}}"
+
+- name: "Collect static files"
+  command: ./manage.py collectstatic --noinput
+  args:
+      chdir: "{{INSTALLATION_DIR}}/{{BUILD_URL}}/ACM_General"
+
+- name: "Make migrations"
+  command: ./manage.py makemigrations
+  args:
+      chdir: "{{INSTALLATION_DIR}}/{{BUILD_URL}}/ACM_General"
+
+- name: "Run migrations"
+  command: ./manage.py migrate --noinput
+  args:
+      chdir: "{{INSTALLATION_DIR}}/{{BUILD_URL}}/ACM_General"
+
+- name: "Generate rst documentation"
+  command: make rst
+  args:
+      chdir: "{{INSTALLATION_DIR}}/{{BUILD_URL}}/docs/"
+
+- name: "Generate html documentation"
+  command: make html 
+  args:
+      chdir: "{{INSTALLATION_DIR}}/{{BUILD_URL}}/docs/"
+
