@@ -6,7 +6,10 @@
   become: yes
   pre_tasks:
     - name: "Clone the repository"
-      git: repo={{website_repo}} dest="{{INSTALLATION_DIR}}/{{BUILD_URL}}/"
+      git: 
+        repo={{website_repo}} 
+        dest="{{INSTALLATION_DIR}}/{{BUILD_URL}}/"
+        version=develop
     - name: "Change repository permissions"
       file: 
         dest="{{INSTALLATION_DIR}}/{{BUILD_URL}}/" 
