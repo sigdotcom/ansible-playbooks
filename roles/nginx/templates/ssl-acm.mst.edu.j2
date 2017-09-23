@@ -32,6 +32,7 @@ server {
     add_header X-Content-Type-Options "nosniff";
     add_header X-Xss-Protection "1";
     resolver 8.8.8.8;
+    client_max_body_size 3M;
 
     ##
     # Using for Google Webmasters
@@ -64,9 +65,9 @@ server {
     }
 
      #Django media
-     #location /media  {
-     #   alias {{INSTALLATION_DIR}}/{{ BUILD_URL}}/ACM_General/media;
-     #}
+     location /media_files {
+        alias {{INSTALLATION_DIR}}/{{ BUILD_URL}}/ACM_General/{{MEDIA_DIR}};
+     }
 
     location /static {
         alias {{INSTALLATION_DIR}}/{{BUILD_URL}}/ACM_General/static; # your Django project's static files - amend as required

@@ -1,7 +1,7 @@
 ###
 # Ansible Configurations
 ###
-ansible_python_interpreter: /usr/bin/python3
+ansible_python_interpreter: /usr/bin/python3.5
 
 ###
 # Build Configuration
@@ -22,4 +22,4 @@ db_host: localhost
 ###
 # Whether or not the website should be set to debug mode
 ###
-debug_state: True
+debug_state: False

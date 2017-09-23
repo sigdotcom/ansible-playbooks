@@ -8,11 +8,12 @@
   template:
     src: "ssl-acm.mst.edu.j2"
     dest: "/etc/nginx/sites-available/ssl-acm.mst.edu"
+  notify:
+    - restart nginx
 
 - name: "Adding UWSGI symlink"
   file:
     src="/etc/nginx/sites-available/ssl-acm.mst.edu"
     dest="/etc/nginx/sites-enabled/ssl-acm.mst.edu"
     state=link
-  notify:
-    - restart nginx
+  

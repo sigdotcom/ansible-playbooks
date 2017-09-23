@@ -6,3 +6,4 @@ db_name: django_acmgeneral
 db_user: djangouser
 db_password: djangoUserPassword
 db_host: localhost
+debug_state: True
